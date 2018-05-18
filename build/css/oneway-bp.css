@@ -703,15 +703,18 @@ template {
 }
 
 .b-task-tabs .b-tabs {
+  position: relative;
+}
+
+.b-task-tabs .b-tabs__labels {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   overflow-x: hidden;
-  position: relative;
 }
 
-.b-task-tabs .b-tabs label {
+.b-task-tabs .b-tabs__labels label {
   border-right: 4px solid white;
   display: block;
   height: 49px;
@@ -720,40 +723,60 @@ template {
   text-align: center;
   font-size: 18px;
   box-sizing: border-box;
-  padding: 0 10px;
   width: auto;
-  background: grey;
 }
 
-.b-task-tabs .b-tabs label:last-of-type {
+.b-task-tabs .b-tabs__labels label:last-of-type {
   border-right: 0px;
 }
 
-.b-task-tabs .b-tabs label.mod-active {
+.b-task-tabs .b-tabs__labels label.mod-active {
   font-weight: bold;
   background-color: white;
 }
 
-.b-task-tabs .b-tabs label span {
+.b-task-tabs .b-tabs__labels label span {
   display: block;
   min-width: 80px;
+  padding: 0 10px;
 }
 
-.b-task-tabs .b-tabs label.b-tabs__js-arrow {
+.b-task-tabs .b-tabs__js-arrow {
   width: 49px;
+  height: 49px;
   position: absolute;
   top: 0;
   padding: 0;
-  background: green;
+  background: white;
+  cursor: pointer;
 }
 
-.b-task-tabs .b-tabs label.b-tabs__js-arrow__left {
+.b-task-tabs .b-tabs__js-arrow:after {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  height: auto;
+  width: auto;
+  font-size: 18px;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.b-task-tabs .b-tabs__js-arrow_left {
   left: 0;
   display: none;
 }
 
-.b-task-tabs .b-tabs label.b-tabs__js-arrow__right {
+.b-task-tabs .b-tabs__js-arrow_left:after {
+  content: '\2190';
+}
+
+.b-task-tabs .b-tabs__js-arrow_right {
   right: 0;
+}
+
+.b-task-tabs .b-tabs__js-arrow_right:after {
+  content: '\2192';
 }
 
 .b-task-tabs .b-content .b-task-content {
@@ -762,85 +785,6 @@ template {
 
 .b-task-tabs .b-content input[type='radio']:checked + div {
   display: block;
-}
-
-.b-task-item {
-  max-width: 660px;
-}
-
-.b-task-item h2 {
-  position: relative;
-  margin-bottom: 14px;
-}
-
-.b-task-item h2 span {
-  position: absolute;
-  left: -8px;
-  -ms-transform: translateX(-100%);
-  transform: translateX(-100%);
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.b-task-item table {
-  line-height: 24px;
-  font-size: 14px;
-  color: #000000;
-  border-collapse: collapse;
-  padding: 0;
-  margin-bottom: 24px;
-}
-
-.b-task-item table tr {
-  vertical-align: baseline;
-  padding: 0;
-}
-
-.b-task-item table td {
-  padding: 0;
-}
-
-.b-task-item table td:first-child {
-  padding-right: 8px;
-}
-
-.b-task-item table td:first-child {
-  width: 120px;
-}
-
-.b-task-item table span {
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #999999;
-}
-
-.b-task-item hr {
-  margin: 20px 0 24px;
-  height: 2px;
-  border: none;
-  background: #D8D8D8;
-}
-
-.b-task-item ul,
-.b-task-item ul li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.b-task-item ul li {
-  font-size: 10px;
-  margin-bottom: 4px;
-}
-
-.b-task-item ul a:hover {
-  color: grey;
-}
-
-.b-task-item ul span {
-  text-decoration: underline;
-  font-size: 14px;
 }
 
 .b-task-content {
@@ -896,6 +840,85 @@ template {
   display: block;
   height: 100%;
   background-color: white;
+}
+
+.b-task-content__item {
+  max-width: 660px;
+}
+
+.b-task-content__item h2 {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.b-task-content__item h2 span {
+  position: absolute;
+  left: -8px;
+  -ms-transform: translateX(-100%);
+  transform: translateX(-100%);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.b-task-content__item table {
+  line-height: 24px;
+  font-size: 14px;
+  color: #000000;
+  border-collapse: collapse;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.b-task-content__item table tr {
+  vertical-align: baseline;
+  padding: 0;
+}
+
+.b-task-content__item table td {
+  padding: 0;
+}
+
+.b-task-content__item table td:first-child {
+  padding-right: 8px;
+}
+
+.b-task-content__item table td:first-child {
+  width: 120px;
+}
+
+.b-task-content__item table span {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #999999;
+}
+
+.b-task-content__item hr {
+  margin: 20px 0 24px;
+  height: 2px;
+  border: none;
+  background: #D8D8D8;
+}
+
+.b-task-content__item ul,
+.b-task-content__item ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.b-task-content__item ul li {
+  font-size: 10px;
+  margin-bottom: 4px;
+}
+
+.b-task-content__item ul a:hover {
+  color: grey;
+}
+
+.b-task-content__item ul span {
+  text-decoration: underline;
+  font-size: 14px;
 }
 
 /*----------  Общие блоки END  ----------*/
